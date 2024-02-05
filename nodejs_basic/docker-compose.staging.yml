@@ -1,0 +1,10 @@
+version: "3"
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        NODE_ENV: staging
+    environment:
+      - NODE_ENV=staging
+    command: node index.js
