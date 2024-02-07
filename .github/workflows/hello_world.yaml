@@ -35,6 +35,11 @@ jobs:
     - uses: actions/checkout@v2
       name: 'Checkout repository'
 
+    - uses: actions/setup-node@v4
+    with:
+      token: ${{ secrets.GH_DOTCOM_TOKEN }}
+      node-version: 18
+    
     - name: 'Install Dependencies'
       run: npm install
 
