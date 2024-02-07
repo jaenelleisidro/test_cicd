@@ -1,0 +1,12 @@
+{
+  "name": "test_cicd",
+  "version": "1.0.0",
+  "description": "enable workflow\r Settings -> Action -> General -> Workflow permissions and choose read and write permissions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
