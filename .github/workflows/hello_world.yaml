@@ -24,5 +24,19 @@ jobs:
       - name: goodbye world
         run: echo "Goodbye world"
         shell: bash
+  test:
+    name: 'Run node js'
+    defaults:
+      run:
+        shell: bash
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      name: 'Checkout repository'
 
+    - name: 'Install Dependencies'
+      run: npm install
+
+    - name: 'Run nodejs'
+      run: node index.js
       
