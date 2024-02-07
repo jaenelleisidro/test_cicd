@@ -26,6 +26,7 @@ jobs:
         shell: bash
   test:
     name: 'Run node js'
+    working-directory: test_cicd
     defaults:
       run:
         shell: bash
