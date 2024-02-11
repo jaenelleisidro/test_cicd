@@ -86,4 +86,5 @@ jobs:
           privateKey: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           command: |
             cd /home/ubuntu/app
+            chmod +x ./docker_pull_and_run.sh
             ./docker_pull_and_run.sh
