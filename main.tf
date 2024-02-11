@@ -166,9 +166,8 @@ resource "aws_instance" "web-server-instance" {
                 echo "$DOCKER_PASSWORD" | docker login --username jaenelleisidro --password-stdin
 
                 docker pull jaenelleisidro/test_cicd_nodejs:main
-                docker run  -p 3000:3000 jaenelleisidro/test_cicd_nodejs:main
-                pause
-
+                docker run -p 3000:3000 -d --name container_test_cicd_nodejs jaenelleisidro/test_cicd_nodejs:main
+                
                 EOF
   tags = {
     Name = "test-cicd-dev-web-server"
