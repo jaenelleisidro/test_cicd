@@ -8,3 +8,4 @@
 terraform.tfvars
 
 test-cicd-dev-keypair.pem
+docker_pat.txt
