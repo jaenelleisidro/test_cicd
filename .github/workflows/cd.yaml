@@ -9,7 +9,7 @@ permissions:
   contents: write
 jobs:
   test:
-    name: 'Run node js'
+    name: 'Run tests'
     defaults:
       run:
         shell: bash
@@ -57,24 +57,24 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-  # deploy_staging:
-  #   needs: push_to_registry
-  #   environment: staging
-  #   name: 'Deploy to staging'
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       name: 'Checkout repository'
+  deploy_staging:
+    needs: push_to_registry
+    environment: staging
+    name: 'Deploy to staging'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: 'Checkout repository'
 
-  #     - uses: burnett01/rsync-deployments@23a557dceb19f9bb960ef40cf75cab5e9b37ec1f
-  #       name: 'Deploy to staging'
-  #       with:
-  #         switches: -avzr --delete
-  #         path: ./web
-  #         remote_path: /var/app
-  #         remote_host: ${{ secrets.EC2_HOSTNAME }}
-  #         remote_user: ${{ secrets.EC2_REMOTE_USER }}
-  #         remote_key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+      - uses: burnett01/rsync-deployments@23a557dceb19f9bb960ef40cf75cab5e9b37ec1f
+        name: 'Deploy to staging'
+        with:
+          switches: -avzr --delete
+          path: .
+          remote_path: /var/app
+          remote_host: ${{ secrets.EC2_HOSTNAME }}
+          remote_user: ${{ secrets.EC2_REMOTE_USER }}
+          remote_key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
       
   #     - uses: JimCronqvist/action-ssh@7737f1192ddd8376686e9d6354dea44592c942bf
   #       name: Execute SSH commmands on remote server
