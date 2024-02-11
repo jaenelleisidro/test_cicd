@@ -20,7 +20,7 @@ const connectWithRetry = () =>{
 		setTimeout(connectWithRetry,5000);
 	});
 }
-connectWithRetry();
+// connectWithRetry();
 
 const port = process.env.PORT || 80;
 
