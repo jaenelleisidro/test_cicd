@@ -94,4 +94,4 @@ jobs:
             echo "Stop docker image if running"
             docker stop container_test_cicd_nodejs || true && docker rm container_test_cicd_nodejs || true
             
-            docker run -p 3000:3000 -d --name container_test_cicd_nodejs jaenelleisidro/test_cicd_nodejs:main
+            docker run -p 80:80 -d --name container_test_cicd_nodejs jaenelleisidro/test_cicd_nodejs:main
