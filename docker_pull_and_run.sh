@@ -7,6 +7,7 @@ docker pull jaenelleisidro/test_cicd_nodejs:main
 
 
 
-docker rmi jaenelleisidro/test_cicd_nodejs:main
+docker stop container_test_cicd_nodejs
+docker rm container_test_cicd_nodejs
 
-docker run -p 3000:3000  -d jaenelleisidro/test_cicd_nodejs:main
+docker run -p 3000:3000 -d --name container_test_cicd_nodejs jaenelleisidro/test_cicd_nodejs:main
