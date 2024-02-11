@@ -76,14 +76,14 @@ jobs:
           remote_user: ${{ secrets.EC2_REMOTE_USER }}
           remote_key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
        
-  #     - uses: JimCronqvist/action-ssh@7737f1192ddd8376686e9d6354dea44592c942bf
-  #       name: Execute SSH commmands on remote server
-  #       env:
-  #         DOCKER_PASSWORD: "${{ secrets.DOCKER_PASSWORD }}"
+      - uses: JimCronqvist/action-ssh@7737f1192ddd8376686e9d6354dea44592c942bf
+        name: Execute SSH commmands on remote server
+        env:
+          DOCKER_PASSWORD: "${{ secrets.DOCKER_PASSWORD }}"
 
-  #       with:
-  #         hosts: '${{ secrets.EC2_REMOTE_USER }}@${{ secrets.EC2_HOSTNAME }}'
-  #         privateKey: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-  #         command: |
-  #           cd /var/app
-  #           ./docker_pull_and
+        with:
+          hosts: '${{ secrets.EC2_REMOTE_USER }}@${{ secrets.EC2_HOSTNAME }}'
+          privateKey: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
+          command: |
+            cd /home/ubuntu/app
+            ./docker_pull_and_run.sh
