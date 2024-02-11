@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.get('/',async (req, res) => {
-	res.json({status:"success",data:"the server is running!!"});
+	res.json({status:"success",data:"the server is running!!!"});
 });
 
 
