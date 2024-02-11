@@ -85,6 +85,13 @@ jobs:
           hosts: '${{ secrets.EC2_REMOTE_USER }}@${{ secrets.EC2_HOSTNAME }}'
           privateKey: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
           command: |
-            cd /home/ubuntu/app
-            chmod +x ./docker_pull_and_run.sh
-            ./docker_pull_and_run.sh
+            cd /home/ubuntu/
+            sudo chmod 666 /var/run/docker.sock
+            echo "$DOCKER_PASSWORD" | docker login --username jaenelleisidro --password-stdin
+            
+            docker pull jaenelleisidro/test_cicd_nodejs:main
+            
+            echo "Stop docker image if running"
+            docker stop container_test_cicd_nodejs || true && docker rm container_test_cicd_nodejs || true
+            
+            docker run -p 3000:3000 -d --name container_test_cicd_nodejs jaenelleisidro/test_cicd_nodejs:main
