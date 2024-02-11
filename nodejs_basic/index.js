@@ -30,7 +30,7 @@ app.use(express.urlencoded({ extended: false }));
 
 
 app.get('/',async (req, res) => {
-	res.json({status:"success",data:"the server is running!!! if this appeared then cicd works"});
+	res.json({status:"success",data:"the server is running!!! trying again if push detects changes"});
 });
 
 
