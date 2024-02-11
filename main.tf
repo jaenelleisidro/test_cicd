@@ -161,13 +161,8 @@ resource "aws_instance" "web-server-instance" {
 
   user_data = <<-EOF
                 #!/bin/bash
-                sudo apt update -y
-                sudo apt install apache2 -y
-                sudo systemctl start apache2
-                sudo bash -c 'echo your very first web server > /var/www/html/index.html'
-
-
-                login using environment variable
+                curl -sSL https://get.docker.com/ | sh
+                
                 echo "$DOCKER_PASSWORD" | docker login --username jaenelleisidro --password-stdin
 
                 docker pull jaenelleisidro/test_cicd_nodejs:v1.0
