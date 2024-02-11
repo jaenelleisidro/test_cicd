@@ -71,11 +71,11 @@ jobs:
         with:
           switches: -avzr --delete
           path: .
-          remote_path: /var/app
+          remote_path: /home/ubuntu/app
           remote_host: ${{ secrets.EC2_HOSTNAME }}
           remote_user: ${{ secrets.EC2_REMOTE_USER }}
           remote_key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
-      
+       
   #     - uses: JimCronqvist/action-ssh@7737f1192ddd8376686e9d6354dea44592c942bf
   #       name: Execute SSH commmands on remote server
   #       env:
