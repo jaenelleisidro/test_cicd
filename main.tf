@@ -166,10 +166,13 @@ resource "aws_instance" "web-server-instance" {
                 sudo systemctl start apache2
                 sudo bash -c 'echo your very first web server > /var/www/html/index.html'
 
-                curl -sSL https://get.docker.com/ | sh
 
-                sudo curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-                sudo chmod +x /usr/local/bin/docker-compose
+                login using environment variable
+                echo "$DOCKER_PASSWORD" | docker login --username jaenelleisidro --password-stdin
+
+                docker pull jaenelleisidro/test_cicd_nodejs:v1.0
+                docker run  -p 3000:3000 jaenelleisidro/test_cicd_nodejs:v1.0
+                pause
 
                 EOF
   tags = {
